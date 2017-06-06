@@ -1,0 +1,37 @@
+DROP TABLE IF EXISTS opdrachten;
+CREATE TABLE opdrachten(
+    opdrachtnummer INT NOT NULL UNIQUE AUTO_INCREMENT,
+    werkinstructie VARCHAR(500),
+    datum_uitvoering TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    kabelleverancier VARCHAR(250),
+    waarnemingen VARCHAR(500),
+    handtekening VARCHAR(50),
+    aantal_Bedrijfsuren INT,
+    afleg_Redenen VARCHAR(500)
+);
+
+INSERT into opdrachten (opdrachtnummer, werkinstructie, datum_uitvoering, kabelleverancier, waarnemingen, handtekening, aantal_Bedrijfsuren, afleg_Redenen)
+
+VALUES('1', 'aanleggen van nieuwe kabels', '2017-10-9', 'Envo', 'Waarname kabels', 'Piet', '45', 'Beperking van kabels'),
+('2', 'aanleggen van nieuwe kabels aan de brug', '2016-10-09', 'BAM', 'Waarname kabels', 'Peter', '150', 'Aanleggen van een nieuwe brug'),
+('3', 'Repareren snelweg', '2015-10-09', 'BAM', 'kabels langs de snelweg', 'Jan', '150', 'Aanleggen van een nieuwe snelweg');
+
+DROP TABLE IF EXISTS kabelkeuring;
+CREATE TABLE kabelkeuring(
+    opdrachtnummer INT NOT NULL UNIQUE AUTO_INCREMENT,
+    kabelid INT,
+    draadbreuk_6D INT,
+    draadbreuk_30D INT,
+    beschadiging_buitenzijde INT,
+    beschadiging_roest_corrosie INT,
+    verminderde_kabeldiameter INT,
+    positie_meetpunten INT,
+    beschadiging_totaal INT,
+    type_beschadiging_roest INT
+);
+
+INSERT into kabelkeuring (opdrachtnummer, kabelid, draadbreuk_6D, draadbreuk_30D, beschadiging_buitenzijde, beschadiging_roest_corrosie,  verminderde_kabeldiameter, positie_meetpunten, beschadiging_totaal, type_beschadiging_roest)
+
+VALUES('1', '20', '30', '44', '6', '20', '20', '55', '43', 20),
+('2', '33', '45', '22', '3', '77', '66', '98', '234', 550),
+('3', '54', '22', '75', '65', '734', '87', '122', '434', 150)
